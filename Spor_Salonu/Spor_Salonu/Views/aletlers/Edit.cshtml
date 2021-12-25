@@ -1,0 +1,63 @@
+﻿@model Spor_Salonu.Models.aletler
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_layoutadmin.cshtml";
+}
+    <div class="content-wrapper">
+        <div class="container">
+            <h2>Alet Güncelle</h2>
+
+            @using (Html.BeginForm("Edit","aletlers",FormMethod.Post, new { enctype="multipart/form-data"}))
+            {
+                @Html.AntiForgeryToken()
+
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.aletid)
+
+        <table class="table table-bordered">
+            <tr>
+                <td>Kategori</td>
+                <td>
+                    @Html.DropDownList("kategoriid", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.kategoriid, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td>Fotoğraf</td>
+                <td>
+                    @Html.EditorFor(model => model.foto, new { htmlAttributes = new { @class = "form-group", type = "file" } })
+                    @Html.ValidationMessageFor(model => model.foto, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td>Alet Ad</td>
+                <td>
+                    @Html.EditorFor(model => model.aletad, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.aletad, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td>Alet Açıklama</td>
+                <td>
+                    @Html.EditorFor(model => model.aletaciklama, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.aletaciklama, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="submit" value="Kaydet" class="btn btn-primary" />
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    @Html.ActionLink("Listeye Geri Dön", "Index", null, new { @class = "btn btn-default" })
+                </td>
+            </tr>
+        </table>
+            }
+            </div>
+        </div>

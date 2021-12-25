@@ -1,0 +1,27 @@
+﻿@model List<Spor_Salonu.Models.aletler>
+@{
+    ViewBag.Title = "alet";
+    Layout = "~/Views/Shared/_layoutkullanici.cshtml";
+}
+
+
+@foreach (var item in Model)
+{
+<section class="page-section">
+    <div class="container">
+        <div class="product-item">
+            <div class="product-item-title d-flex">
+                <div class="bg-faded p-5 d-flex ms-auto rounded">
+                    <h2 class="section-heading mb-0">
+                        <span class="section-heading-lower">@item.aletad</span>
+                    </h2>
+                </div>
+            </div>
+            <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="~/web/assets/img/aletler.jpg" alt="..." />
+            <div class="product-item-description d-flex me-auto">
+                <div class="bg-faded p-5 rounded"><p class="mb-0">@Html.Raw(item.aletaciklama)</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+}

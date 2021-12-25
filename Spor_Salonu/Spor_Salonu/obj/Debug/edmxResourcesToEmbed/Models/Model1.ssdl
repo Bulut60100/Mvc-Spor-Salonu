@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="sporsalonuModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="aletler">
+    <Key>
+      <PropertyRef Name="aletid" />
+    </Key>
+    <Property Name="aletid" Type="int" Nullable="false" />
+    <Property Name="kategoriid" Type="int" />
+    <Property Name="aletad" Type="nvarchar" MaxLength="50" />
+    <Property Name="aletaciklama" Type="text" />
+    <Property Name="foto" Type="char" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="beslenme">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kategorid" Type="int" />
+    <Property Name="gunid" Type="int" />
+    <Property Name="aciklamas" Type="text" />
+    <Property Name="aciklamao" Type="text" />
+    <Property Name="aciklamaa" Type="text" />
+  </EntityType>
+  <EntityType Name="giris">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kadi" Type="nvarchar" MaxLength="50" />
+    <Property Name="sifre" Type="nvarchar" MaxLength="50" />
+    <Property Name="yetki" Type="nvarchar" MaxLength="50" />
+    <Property Name="ad" Type="nvarchar" MaxLength="50" />
+    <Property Name="soyad" Type="nvarchar" MaxLength="50" />
+    <Property Name="tel" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="gun">
+    <Key>
+      <PropertyRef Name="gunid" />
+    </Key>
+    <Property Name="gunid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="gunad" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="kategori">
+    <Key>
+      <PropertyRef Name="kategorid" />
+    </Key>
+    <Property Name="kategorid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kategoriad" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="kategori2">
+    <Key>
+      <PropertyRef Name="kategoriid" />
+    </Key>
+    <Property Name="kategoriid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kategoriad" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_aletler_kategori">
+    <End Role="kategori" Type="Self.kategori" Multiplicity="0..1" />
+    <End Role="aletler" Type="Self.aletler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kategori">
+        <PropertyRef Name="kategorid" />
+      </Principal>
+      <Dependent Role="aletler">
+        <PropertyRef Name="kategoriid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_beslenme_gun">
+    <End Role="gun" Type="Self.gun" Multiplicity="0..1" />
+    <End Role="beslenme" Type="Self.beslenme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gun">
+        <PropertyRef Name="gunid" />
+      </Principal>
+      <Dependent Role="beslenme">
+        <PropertyRef Name="gunid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_beslenme_kategori2">
+    <End Role="kategori2" Type="Self.kategori2" Multiplicity="0..1" />
+    <End Role="beslenme" Type="Self.beslenme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kategori2">
+        <PropertyRef Name="kategoriid" />
+      </Principal>
+      <Dependent Role="beslenme">
+        <PropertyRef Name="kategorid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="sporsalonuModelStoreContainer">
+    <EntitySet Name="aletler" EntityType="Self.aletler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="beslenme" EntityType="Self.beslenme" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="giris" EntityType="Self.giris" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="gun" EntityType="Self.gun" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kategori" EntityType="Self.kategori" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="kategori2" EntityType="Self.kategori2" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_aletler_kategori" Association="Self.FK_aletler_kategori">
+      <End Role="kategori" EntitySet="kategori" />
+      <End Role="aletler" EntitySet="aletler" />
+    </AssociationSet>
+    <AssociationSet Name="FK_beslenme_gun" Association="Self.FK_beslenme_gun">
+      <End Role="gun" EntitySet="gun" />
+      <End Role="beslenme" EntitySet="beslenme" />
+    </AssociationSet>
+    <AssociationSet Name="FK_beslenme_kategori2" Association="Self.FK_beslenme_kategori2">
+      <End Role="kategori2" EntitySet="kategori2" />
+      <End Role="beslenme" EntitySet="beslenme" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

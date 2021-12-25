@@ -1,0 +1,65 @@
+﻿@model Spor_Salonu.Models.giris
+@{
+    ViewBag.Title = "uyeguncelle";
+    Layout = "~/Views/Shared/_layoutadmin.cshtml";
+}
+    <div class="content-wrapper">
+        <div class="container">
+            <h2>Üye Güncelle</h2>
+            @using (Html.BeginForm("kaydet", "uyeler", FormMethod.Post))
+            {
+        <table class="table table-bordered">
+            <tr>
+                <td>Ad</td>
+                <td>
+                    @Html.TextBoxFor(m => m.ad, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.ad)
+                </td>
+            </tr>
+            <tr>
+                <td>Soyad</td>
+                <td>
+                    @Html.TextBoxFor(m => m.soyad, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.soyad)
+                </td>
+            </tr>
+            <tr>
+                <td>Telefon</td>
+                <td>
+                    @Html.TextBoxFor(m => m.tel, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.tel)
+                </td>
+            </tr>
+            <tr>
+                <td>kullanici adi</td>
+                <td>
+                    @Html.TextBoxFor(m => m.kadi, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.kadi)
+                </td>
+            </tr>
+            <tr>
+                <td>sifre</td>
+                <td>
+                    @Html.TextBoxFor(m => m.sifre, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.sifre)
+                </td>
+            </tr>
+            <tr>
+                <td>yetki</td>
+                <td>
+                    @Html.TextBoxFor(m => m.yetki, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.yetki)
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    @Html.HiddenFor(m => m.id)
+                    <input type="submit" value="Güncelle" class="btn btn-success" />
+                </td>
+            </tr>
+        </table>
+            }
+        </div>
+        </div>
+

@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="sporsalonuModelStoreContainer" CdmEntityContainer="sporsalonuEntities1">
+    <EntitySetMapping Name="giris">
+      <EntityTypeMapping TypeName="sporsalonuModel.giris">
+        <MappingFragment StoreEntitySet="giris">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="kadi" ColumnName="kadi" />
+          <ScalarProperty Name="sifre" ColumnName="sifre" />
+          <ScalarProperty Name="yetki" ColumnName="yetki" />
+          <ScalarProperty Name="ad" ColumnName="ad" />
+          <ScalarProperty Name="soyad" ColumnName="soyad" />
+          <ScalarProperty Name="tel" ColumnName="tel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="aletler">
+      <EntityTypeMapping TypeName="sporsalonuModel.aletler">
+        <MappingFragment StoreEntitySet="aletler">
+          <ScalarProperty Name="foto" ColumnName="foto" />
+          <ScalarProperty Name="aletaciklama" ColumnName="aletaciklama" />
+          <ScalarProperty Name="aletad" ColumnName="aletad" />
+          <ScalarProperty Name="kategoriid" ColumnName="kategoriid" />
+          <ScalarProperty Name="aletid" ColumnName="aletid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kategori">
+      <EntityTypeMapping TypeName="sporsalonuModel.kategori">
+        <MappingFragment StoreEntitySet="kategori">
+          <ScalarProperty Name="kategoriad" ColumnName="kategoriad" />
+          <ScalarProperty Name="kategorid" ColumnName="kategorid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="beslenme">
+      <EntityTypeMapping TypeName="sporsalonuModel.beslenme">
+        <MappingFragment StoreEntitySet="beslenme">
+          <ScalarProperty Name="aciklamaa" ColumnName="aciklamaa" />
+          <ScalarProperty Name="aciklamao" ColumnName="aciklamao" />
+          <ScalarProperty Name="aciklamas" ColumnName="aciklamas" />
+          <ScalarProperty Name="gunid" ColumnName="gunid" />
+          <ScalarProperty Name="kategorid" ColumnName="kategorid" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="gun">
+      <EntityTypeMapping TypeName="sporsalonuModel.gun">
+        <MappingFragment StoreEntitySet="gun">
+          <ScalarProperty Name="gunad" ColumnName="gunad" />
+          <ScalarProperty Name="gunid" ColumnName="gunid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="kategori2">
+      <EntityTypeMapping TypeName="sporsalonuModel.kategori2">
+        <MappingFragment StoreEntitySet="kategori2">
+          <ScalarProperty Name="kategoriad" ColumnName="kategoriad" />
+          <ScalarProperty Name="kategoriid" ColumnName="kategoriid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

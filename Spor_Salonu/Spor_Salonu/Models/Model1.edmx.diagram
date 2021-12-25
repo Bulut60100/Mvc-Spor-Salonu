@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="af4f5e99d0be4a7d9ee33b18cbf68f01" Name="Diagram1">
+        <EntityTypeShape EntityType="sporsalonuModel.giris" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="sporsalonuModel.aletler" Width="1.5" PointX="5.625" PointY="0.75" />
+        <EntityTypeShape EntityType="sporsalonuModel.kategori" Width="1.5" PointX="3.375" PointY="0.875" />
+        <AssociationConnector Association="sporsalonuModel.FK_aletler_kategori" />
+        <EntityTypeShape EntityType="sporsalonuModel.beslenme" Width="1.5" PointX="5.625" PointY="4" />
+        <EntityTypeShape EntityType="sporsalonuModel.gun" Width="1.5" PointX="3.375" PointY="7.75" />
+        <EntityTypeShape EntityType="sporsalonuModel.kategori2" Width="1.5" PointX="3.375" PointY="4.75" />
+        <AssociationConnector Association="sporsalonuModel.FK_beslenme_gun" />
+        <AssociationConnector Association="sporsalonuModel.FK_beslenme_kategori2" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

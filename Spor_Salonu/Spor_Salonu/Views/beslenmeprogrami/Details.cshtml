@@ -1,0 +1,54 @@
+﻿@model Spor_Salonu.Models.beslenme
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_layoutadmin.cshtml";
+}
+
+
+    <div class="content-wrapper">
+        <div class="container">
+            <h2>Detay</h2>
+            <h4>Besleme Programı</h4>
+            <hr />
+
+            <table class="table table-bordered">
+                <tr>
+                    <td>Kategori</td>
+                    <td>
+                        @Html.DisplayFor(model => model.kategori2.kategoriad)
+                    </td>
+                </tr>
+                <tr>
+                    <td>Gün</td>
+                    <td>
+                        @Html.DisplayFor(model => model.gun.gunad)
+                    </td>
+                </tr>
+                <tr>
+                    <td>Sabah</td>
+                    <td>
+                        @Html.DisplayFor(model => model.aciklamas)
+                    </td>
+                </tr>
+                <tr>
+                    <td>Öğlen</td>
+                    <td>
+                        @Html.DisplayFor(model => model.aciklamao)
+                    </td>
+                </tr>
+                <tr>
+                    <td>Akşam</td>
+                    <td>
+                        @Html.DisplayFor(model => model.aciklamaa)
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        @Html.ActionLink("Listeye Geri Dön", "Index", null, new { @class = "btn btn-default" })
+                    </td>
+                </tr>
+            </table>
+        </div>
+</div>

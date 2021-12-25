@@ -1,0 +1,125 @@
+﻿@model IEnumerable<Spor_Salonu.Models.aletler>
+
+@{
+    ViewBag.Title = "Aletler";
+    Layout = "~/Views/Shared/_layoutadmin.cshtml";
+}
+
+@if (TempData["aletekle"] != null)
+{
+    <link href="~/web/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css" rel="stylesheet" />
+    <script src="~/web/plugins/sweetalert2/sweetalert2.min.js"></script>
+    <script>
+        Swal.fire("Başarılı", "Alet Başarılı Bir Şekilde Eklendi", 'success');
+    </script>
+}
+
+@if (TempData["aletguncelle"] != null)
+{
+    <link href="~/web/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css" rel="stylesheet" />
+    <script src="~/web/plugins/sweetalert2/sweetalert2.min.js"></script>
+    <script>
+        Swal.fire("Başarılı", "Alet Başarılı Bir Şekilde Güncellendi", 'success');
+    </script>
+}
+
+@if (TempData["aletsil"] != null)
+{
+    <link href="~/web/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css" rel="stylesheet" />
+    <script src="~/web/plugins/sweetalert2/sweetalert2.min.js"></script>
+    <script>
+        Swal.fire("Başarılı", "Alet Başarılı Bir Şekilde Silindi", 'success');
+    </script>
+}
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Aletler</h1>
+                </div>
+                <div class="col-sm-6">
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            @Html.ActionLink("Yeni Alet Ekle", "Create", null, new { @class = "btn btn-primary" })
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+                            <table id="example1" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Kategori Ad</th>
+                                        <th>Fotoğraf</th>
+                                        <th>Alet Ad</th>
+                                        <th>Alet Açıklama</th>
+                                        <th>Detay</th>
+                                        <th>Güncelle</th>
+                                        <th>Sil</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.kategori.kategoriad)</td>
+                                        <td><img src="@Html.DisplayFor(modelItem => item.foto)" width="150" /></td>
+                                        <td>@Html.DisplayFor(modelItem => item.aletad)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.aletaciklama)</td>
+                                        <td>@Html.ActionLink("Detay", "Details", new { id = item.aletid }, new { @class = "btn btn-info" })</td>
+                                        <td>@Html.ActionLink("Güncelle", "Edit", new { id = item.aletid }, new { @class = "btn btn-info" })</td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#sil_@item.aletid">
+                                                Sil
+                                            </button>
+                                            <div class="modal fade" id="sil_@item.aletid">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h4 class="modal-title">Aleti Sil</h4>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p>Aleti silmek istiyormusunuz?</p>
+                                                        </div>
+                                                        <div class="modal-footer justify-content-between">
+                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Vazgeç</button>
+                                                            @Html.ActionLink("Sil", "Delete", new { id = item.aletid }, new { @class = "btn btn-danger" })
+                                                        </div>
+                                                    </div>
+                                                    <!-- /.modal-content -->
+                                                </div>
+                                                <!-- /.modal-dialog -->
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>

@@ -1,0 +1,43 @@
+﻿@model Spor_Salonu.Models.aletler
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_layoutkullanici.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>aletler</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.aletad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.aletad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.aletaciklama)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.aletaciklama)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.kategori.kategoriad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kategori.kategoriad)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.aletid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

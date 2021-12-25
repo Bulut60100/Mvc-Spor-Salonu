@@ -1,0 +1,65 @@
+﻿@model Spor_Salonu.Models.beslenme
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_layoutadmin.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>beslenme</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.aciklamas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.aciklamas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.aciklamao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.aciklamao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.aciklamaa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.aciklamaa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gun.gunad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gun.gunad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.kategori2.kategoriad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kategori2.kategoriad)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

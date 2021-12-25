@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="sporsalonuModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="giris">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="yetki" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="tel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="sporsalonuEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="giris" EntityType="Self.giris" />
+    <EntitySet Name="aletler" EntityType="sporsalonuModel.aletler" />
+    <EntitySet Name="kategori" EntityType="sporsalonuModel.kategori" />
+    <AssociationSet Name="FK_aletler_kategori" Association="sporsalonuModel.FK_aletler_kategori">
+      <End Role="kategori" EntitySet="kategori" />
+      <End Role="aletler" EntitySet="aletler" />
+    </AssociationSet>
+    <EntitySet Name="beslenme" EntityType="sporsalonuModel.beslenme" />
+    <EntitySet Name="gun" EntityType="sporsalonuModel.gun" />
+    <EntitySet Name="kategori2" EntityType="sporsalonuModel.kategori2" />
+    <AssociationSet Name="FK_beslenme_gun" Association="sporsalonuModel.FK_beslenme_gun">
+      <End Role="gun" EntitySet="gun" />
+      <End Role="beslenme" EntitySet="beslenme" />
+    </AssociationSet>
+    <AssociationSet Name="FK_beslenme_kategori2" Association="sporsalonuModel.FK_beslenme_kategori2">
+      <End Role="kategori2" EntitySet="kategori2" />
+      <End Role="beslenme" EntitySet="beslenme" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="aletler">
+    <Key>
+      <PropertyRef Name="aletid" />
+    </Key>
+    <Property Name="aletid" Type="Int32" Nullable="false" />
+    <Property Name="kategoriid" Type="Int32" />
+    <Property Name="aletad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="kategori" Relationship="sporsalonuModel.FK_aletler_kategori" FromRole="aletler" ToRole="kategori" />
+    <Property Name="aletaciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="foto" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="kategori">
+    <Key>
+      <PropertyRef Name="kategorid" />
+    </Key>
+    <Property Name="kategorid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kategoriad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="aletler" Relationship="sporsalonuModel.FK_aletler_kategori" FromRole="kategori" ToRole="aletler" />
+  </EntityType>
+  <Association Name="FK_aletler_kategori">
+    <End Type="sporsalonuModel.kategori" Role="kategori" Multiplicity="0..1" />
+    <End Type="sporsalonuModel.aletler" Role="aletler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kategori">
+        <PropertyRef Name="kategorid" />
+      </Principal>
+      <Dependent Role="aletler">
+        <PropertyRef Name="kategoriid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="beslenme">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kategorid" Type="Int32" />
+    <Property Name="gunid" Type="Int32" />
+    <Property Name="aciklamas" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="aciklamao" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="aciklamaa" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="gun" Relationship="sporsalonuModel.FK_beslenme_gun" FromRole="beslenme" ToRole="gun" />
+    <NavigationProperty Name="kategori2" Relationship="sporsalonuModel.FK_beslenme_kategori2" FromRole="beslenme" ToRole="kategori2" />
+  </EntityType>
+  <EntityType Name="gun">
+    <Key>
+      <PropertyRef Name="gunid" />
+    </Key>
+    <Property Name="gunid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="beslenme" Relationship="sporsalonuModel.FK_beslenme_gun" FromRole="gun" ToRole="beslenme" />
+    <Property Name="gunad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="kategori2">
+    <Key>
+      <PropertyRef Name="kategoriid" />
+    </Key>
+    <Property Name="kategoriid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kategoriad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="beslenme" Relationship="sporsalonuModel.FK_beslenme_kategori2" FromRole="kategori2" ToRole="beslenme" />
+  </EntityType>
+  <Association Name="FK_beslenme_gun">
+    <End Type="sporsalonuModel.gun" Role="gun" Multiplicity="0..1" />
+    <End Type="sporsalonuModel.beslenme" Role="beslenme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="gun">
+        <PropertyRef Name="gunid" />
+      </Principal>
+      <Dependent Role="beslenme">
+        <PropertyRef Name="gunid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_beslenme_kategori2">
+    <End Type="sporsalonuModel.kategori2" Role="kategori2" Multiplicity="0..1" />
+    <End Type="sporsalonuModel.beslenme" Role="beslenme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="kategori2">
+        <PropertyRef Name="kategoriid" />
+      </Principal>
+      <Dependent Role="beslenme">
+        <PropertyRef Name="kategorid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

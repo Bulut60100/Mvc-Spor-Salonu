@@ -1,0 +1,53 @@
+﻿@model Spor_Salonu.Models.aletler
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_layoutadmin.cshtml";
+}
+
+    <div class="content-wrapper">
+        <div class="container">
+            <h2>Detay</h2>
+
+                <h4>Aletler</h4>
+                <hr />
+                <table class="table table-bordered">
+                    <tr>
+                        <td>Alet İd</td>
+                        <td>
+                            @Html.DisplayFor(model => model.aletid)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Kategori</td>
+                        <td>
+                            @Html.DisplayFor(model => model.kategori.kategoriad)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Fotoğraf</td>
+                        <td>
+                            <img src="@Html.DisplayFor(modelItem => Model.foto)" width="150" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Alet Adı</td>
+                        <td>
+                            @Html.DisplayFor(model => model.aletad)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Alet Açıklama</td>
+                        <td>
+                            @Html.DisplayFor(model => model.aletaciklama)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            @Html.ActionLink("Listeye Geri Dön", "Index", null, new { @class = "btn btn-default" })
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>

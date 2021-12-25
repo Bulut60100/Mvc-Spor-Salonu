@@ -1,0 +1,43 @@
+﻿@model Spor_Salonu.Models.kategori2
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_layoutadmin.cshtml";
+}
+
+    <div class="content-wrapper">
+        <div class="container">
+            <h2>Yeni Kategori Ekle</h2>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <table class="table table-hover bg-white">
+                    <tr>
+                        <td>
+                            Kategori Ad
+                        </td>
+                        <td>
+                            @Html.EditorFor(model => model.kategoriad, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.kategoriad, "", new { @class = "text-danger" })
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" value="Kaydet" class="btn btn-primary" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            @Html.ActionLink("Listeye  Geri Dön", "Index", null, new { @class = "btn btn-default" })
+                        </td>
+                    </tr>
+                </table>
+            }
+        </div>
+    </div>

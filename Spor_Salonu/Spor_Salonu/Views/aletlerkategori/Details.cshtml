@@ -1,0 +1,27 @@
+﻿@model Spor_Salonu.Models.kategori
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_layoutadmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>kategori</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.kategoriad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kategoriad)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.kategorid }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

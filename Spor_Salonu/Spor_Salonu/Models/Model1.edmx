@@ -1,0 +1,327 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="sporsalonuModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="aletler">
+          <Key>
+            <PropertyRef Name="aletid" />
+          </Key>
+          <Property Name="aletid" Type="int" Nullable="false" />
+          <Property Name="kategoriid" Type="int" />
+          <Property Name="aletad" Type="nvarchar" MaxLength="50" />
+          <Property Name="aletaciklama" Type="text" />
+          <Property Name="foto" Type="char" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="beslenme">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kategorid" Type="int" />
+          <Property Name="gunid" Type="int" />
+          <Property Name="aciklamas" Type="text" />
+          <Property Name="aciklamao" Type="text" />
+          <Property Name="aciklamaa" Type="text" />
+        </EntityType>
+        <EntityType Name="giris">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kadi" Type="nvarchar" MaxLength="50" />
+          <Property Name="sifre" Type="nvarchar" MaxLength="50" />
+          <Property Name="yetki" Type="nvarchar" MaxLength="50" />
+          <Property Name="ad" Type="nvarchar" MaxLength="50" />
+          <Property Name="soyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="tel" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="gun">
+          <Key>
+            <PropertyRef Name="gunid" />
+          </Key>
+          <Property Name="gunid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gunad" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="kategori">
+          <Key>
+            <PropertyRef Name="kategorid" />
+          </Key>
+          <Property Name="kategorid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kategoriad" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="kategori2">
+          <Key>
+            <PropertyRef Name="kategoriid" />
+          </Key>
+          <Property Name="kategoriid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kategoriad" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_aletler_kategori">
+          <End Role="kategori" Type="Self.kategori" Multiplicity="0..1" />
+          <End Role="aletler" Type="Self.aletler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kategori">
+              <PropertyRef Name="kategorid" />
+            </Principal>
+            <Dependent Role="aletler">
+              <PropertyRef Name="kategoriid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_beslenme_gun">
+          <End Role="gun" Type="Self.gun" Multiplicity="0..1" />
+          <End Role="beslenme" Type="Self.beslenme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gun">
+              <PropertyRef Name="gunid" />
+            </Principal>
+            <Dependent Role="beslenme">
+              <PropertyRef Name="gunid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_beslenme_kategori2">
+          <End Role="kategori2" Type="Self.kategori2" Multiplicity="0..1" />
+          <End Role="beslenme" Type="Self.beslenme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kategori2">
+              <PropertyRef Name="kategoriid" />
+            </Principal>
+            <Dependent Role="beslenme">
+              <PropertyRef Name="kategorid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="sporsalonuModelStoreContainer">
+          <EntitySet Name="aletler" EntityType="Self.aletler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="beslenme" EntityType="Self.beslenme" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="giris" EntityType="Self.giris" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="gun" EntityType="Self.gun" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="kategori" EntityType="Self.kategori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="kategori2" EntityType="Self.kategori2" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_aletler_kategori" Association="Self.FK_aletler_kategori">
+            <End Role="kategori" EntitySet="kategori" />
+            <End Role="aletler" EntitySet="aletler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_beslenme_gun" Association="Self.FK_beslenme_gun">
+            <End Role="gun" EntitySet="gun" />
+            <End Role="beslenme" EntitySet="beslenme" />
+          </AssociationSet>
+          <AssociationSet Name="FK_beslenme_kategori2" Association="Self.FK_beslenme_kategori2">
+            <End Role="kategori2" EntitySet="kategori2" />
+            <End Role="beslenme" EntitySet="beslenme" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="sporsalonuModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="giris">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="yetki" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="sporsalonuEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="giris" EntityType="Self.giris" />
+          <EntitySet Name="aletler" EntityType="sporsalonuModel.aletler" />
+          <EntitySet Name="kategori" EntityType="sporsalonuModel.kategori" />
+          <AssociationSet Name="FK_aletler_kategori" Association="sporsalonuModel.FK_aletler_kategori">
+            <End Role="kategori" EntitySet="kategori" />
+            <End Role="aletler" EntitySet="aletler" />
+          </AssociationSet>
+          <EntitySet Name="beslenme" EntityType="sporsalonuModel.beslenme" />
+          <EntitySet Name="gun" EntityType="sporsalonuModel.gun" />
+          <EntitySet Name="kategori2" EntityType="sporsalonuModel.kategori2" />
+          <AssociationSet Name="FK_beslenme_gun" Association="sporsalonuModel.FK_beslenme_gun">
+            <End Role="gun" EntitySet="gun" />
+            <End Role="beslenme" EntitySet="beslenme" />
+          </AssociationSet>
+          <AssociationSet Name="FK_beslenme_kategori2" Association="sporsalonuModel.FK_beslenme_kategori2">
+            <End Role="kategori2" EntitySet="kategori2" />
+            <End Role="beslenme" EntitySet="beslenme" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="aletler">
+          <Key>
+            <PropertyRef Name="aletid" />
+          </Key>
+          <Property Name="aletid" Type="Int32" Nullable="false" />
+          <Property Name="kategoriid" Type="Int32" />
+          <Property Name="aletad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="kategori" Relationship="sporsalonuModel.FK_aletler_kategori" FromRole="aletler" ToRole="kategori" />
+          <Property Name="aletaciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="foto" Type="String" MaxLength="50" FixedLength="true" Unicode="false" />
+        </EntityType>
+        <EntityType Name="kategori">
+          <Key>
+            <PropertyRef Name="kategorid" />
+          </Key>
+          <Property Name="kategorid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kategoriad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="aletler" Relationship="sporsalonuModel.FK_aletler_kategori" FromRole="kategori" ToRole="aletler" />
+        </EntityType>
+        <Association Name="FK_aletler_kategori">
+          <End Type="sporsalonuModel.kategori" Role="kategori" Multiplicity="0..1" />
+          <End Type="sporsalonuModel.aletler" Role="aletler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kategori">
+              <PropertyRef Name="kategorid" />
+            </Principal>
+            <Dependent Role="aletler">
+              <PropertyRef Name="kategoriid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="beslenme">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kategorid" Type="Int32" />
+          <Property Name="gunid" Type="Int32" />
+          <Property Name="aciklamas" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="aciklamao" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="aciklamaa" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="gun" Relationship="sporsalonuModel.FK_beslenme_gun" FromRole="beslenme" ToRole="gun" />
+          <NavigationProperty Name="kategori2" Relationship="sporsalonuModel.FK_beslenme_kategori2" FromRole="beslenme" ToRole="kategori2" />
+        </EntityType>
+        <EntityType Name="gun">
+          <Key>
+            <PropertyRef Name="gunid" />
+          </Key>
+          <Property Name="gunid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="beslenme" Relationship="sporsalonuModel.FK_beslenme_gun" FromRole="gun" ToRole="beslenme" />
+          <Property Name="gunad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="kategori2">
+          <Key>
+            <PropertyRef Name="kategoriid" />
+          </Key>
+          <Property Name="kategoriid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kategoriad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="beslenme" Relationship="sporsalonuModel.FK_beslenme_kategori2" FromRole="kategori2" ToRole="beslenme" />
+        </EntityType>
+        <Association Name="FK_beslenme_gun">
+          <End Type="sporsalonuModel.gun" Role="gun" Multiplicity="0..1" />
+          <End Type="sporsalonuModel.beslenme" Role="beslenme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gun">
+              <PropertyRef Name="gunid" />
+            </Principal>
+            <Dependent Role="beslenme">
+              <PropertyRef Name="gunid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_beslenme_kategori2">
+          <End Type="sporsalonuModel.kategori2" Role="kategori2" Multiplicity="0..1" />
+          <End Type="sporsalonuModel.beslenme" Role="beslenme" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kategori2">
+              <PropertyRef Name="kategoriid" />
+            </Principal>
+            <Dependent Role="beslenme">
+              <PropertyRef Name="kategorid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="sporsalonuModelStoreContainer" CdmEntityContainer="sporsalonuEntities1">
+          <EntitySetMapping Name="giris">
+            <EntityTypeMapping TypeName="sporsalonuModel.giris">
+              <MappingFragment StoreEntitySet="giris">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="kadi" ColumnName="kadi" />
+                <ScalarProperty Name="sifre" ColumnName="sifre" />
+                <ScalarProperty Name="yetki" ColumnName="yetki" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+                <ScalarProperty Name="soyad" ColumnName="soyad" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aletler">
+            <EntityTypeMapping TypeName="sporsalonuModel.aletler">
+              <MappingFragment StoreEntitySet="aletler">
+                <ScalarProperty Name="foto" ColumnName="foto" />
+                <ScalarProperty Name="aletaciklama" ColumnName="aletaciklama" />
+                <ScalarProperty Name="aletad" ColumnName="aletad" />
+                <ScalarProperty Name="kategoriid" ColumnName="kategoriid" />
+                <ScalarProperty Name="aletid" ColumnName="aletid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="kategori">
+            <EntityTypeMapping TypeName="sporsalonuModel.kategori">
+              <MappingFragment StoreEntitySet="kategori">
+                <ScalarProperty Name="kategoriad" ColumnName="kategoriad" />
+                <ScalarProperty Name="kategorid" ColumnName="kategorid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="beslenme">
+            <EntityTypeMapping TypeName="sporsalonuModel.beslenme">
+              <MappingFragment StoreEntitySet="beslenme">
+                <ScalarProperty Name="aciklamaa" ColumnName="aciklamaa" />
+                <ScalarProperty Name="aciklamao" ColumnName="aciklamao" />
+                <ScalarProperty Name="aciklamas" ColumnName="aciklamas" />
+                <ScalarProperty Name="gunid" ColumnName="gunid" />
+                <ScalarProperty Name="kategorid" ColumnName="kategorid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gun">
+            <EntityTypeMapping TypeName="sporsalonuModel.gun">
+              <MappingFragment StoreEntitySet="gun">
+                <ScalarProperty Name="gunad" ColumnName="gunad" />
+                <ScalarProperty Name="gunid" ColumnName="gunid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="kategori2">
+            <EntityTypeMapping TypeName="sporsalonuModel.kategori2">
+              <MappingFragment StoreEntitySet="kategori2">
+                <ScalarProperty Name="kategoriad" ColumnName="kategoriad" />
+                <ScalarProperty Name="kategoriid" ColumnName="kategoriid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

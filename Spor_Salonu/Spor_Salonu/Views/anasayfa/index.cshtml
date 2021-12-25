@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "index";
+}
+
+<!DOCTYPE HTML>
+<html lang="zxx">
+
+<head>
+    <title>Giris</title>
+    <!-- Meta tag Keywords -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="keywords" content="Fitness Login Form Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
+    <script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+    </script>
+    <!-- Meta tag Keywords -->
+    <!-- css files -->
+    <link rel="stylesheet" href="/web/css/style.css" type="text/css" media="all" />
+    <!-- Style-CSS -->
+    <link rel="stylesheet" href="/web/css/fontawesome-all.css">
+    <!-- Font-Awesome-Icons-CSS -->
+    <!-- //css files -->
+    <!-- web-fonts -->
+    <link href="//fonts.googleapis.com/css?family=Sigmar+One&amp;subset=latin-ext,vietnamese" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+    <!-- //web-fonts -->
+</head>
+
+<body>
+    <!-- title -->
+    <h1>BULUT SPOR SALONU</h1>
+    <!-- //title -->
+    <!-- content -->
+    <div class="sub-main-w3">
+        @using (Html.BeginForm("index", "anasayfa", FormMethod.Post))
+        {
+            <label style="color:red">
+                @if (ViewBag.hata != null)
+                {
+                    @ViewBag.hata
+                }
+            </label>
+            <div class="form-style-agile">
+                <label>
+                    Kullanıcı Adı
+                    <i class="fas fa-user"></i>
+                </label>
+                <input placeholder="Kullanıcı Adınızı Giriniz" name="kadi" type="text" required="">
+            </div>
+            <div class="form-style-agile">
+                <label>
+                    Şifre
+                    <i class="fas fa-unlock-alt"></i>
+                </label>
+                <input placeholder="Şifrenizi Giriniz" name="sifre" type="password" required="">
+            </div>
+
+            <!-- //switch -->
+            <input type="submit" value="Giriş Yap">
+        }
+    </div>
+    <div class="clear"></div>
+    <!-- //content -->
+    <!-- copyright -->
+    <div class="footer">
+        
+    </div>
+    <!-- //copyright -->
+
+</body>
+
+</html>
+

@@ -1,0 +1,59 @@
+﻿@model Spor_Salonu.Models.beslenme
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_layoutkullanici.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>beslenme</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.aciklamas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.aciklamas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.aciklamao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.aciklamao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.aciklamaa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.aciklamaa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gun.gunad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gun.gunad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.kategori2.kategoriad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kategori2.kategoriad)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
